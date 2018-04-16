@@ -38,6 +38,28 @@ namespace ConsoleLogPackager
                 Console.ReadLine();
                 return;
             }
+            result = "";  //re-init result
+            Console.WriteLine("Do you want to perform other operations?\nPress Y to continue. \n");
+            result = Console.ReadLine();
+            if (result.Equals("y", StringComparison.OrdinalIgnoreCase) || result.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("yes");
+                //Console.ReadLine();
+
+                Otheroperations();
+             }
+            else
+            {
+                Console.WriteLine("Not Y.  We will exit.");
+                Console.ReadLine();
+                return;
+
+            }
+
+            Console.WriteLine("There are no more features.\n  Press any key to exit\n");
+            Console.ReadLine();
+
+
         }
 
 
@@ -102,9 +124,10 @@ namespace ConsoleLogPackager
             
             //And, we can tell them and exit
             Console.WriteLine("Zip file is on your desktop.  Thank you. \n");
-            Console.WriteLine("Press any key to exit.  Or that X button");
-            System.Console.ReadKey();
-        }
+            //Console.WriteLine("Press any key to exit.  Or that X button");
+            //System.Console.ReadKey();
+            return;
+         }
 
 
         public static void AddFileNamesToList(string sourceDir, List<string> allFiles)
@@ -178,7 +201,103 @@ namespace ConsoleLogPackager
             }
 
         }
+        public static void Otheroperations()
 
+        {
+            string folderpath = " ";        //set to null to begin with
+            string pathtodelete = "";
+            folderpath = LoadJson(folderpath);
+
+            Console.WriteLine("Do you want to delete the consensus?\n");
+            string ooResult = Console.ReadLine();
+            if (ooResult.Equals("y", StringComparison.OrdinalIgnoreCase) || ooResult.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("yes");
+                pathtodelete = folderpath + "\\consensus";
+                if (Directory.Exists(pathtodelete))
+                {
+                    Console.WriteLine ("deleting " + (pathtodelete) + "\n");
+                    Directory.Delete(pathtodelete, true);
+                }
+                //reset to null
+                pathtodelete = "";
+            }
+            ooResult = "";
+            Console.WriteLine("Do you want to delete the transaction pool?\n");
+            ooResult = Console.ReadLine();
+            if (ooResult.Equals("y", StringComparison.OrdinalIgnoreCase) || ooResult.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("yes");
+                pathtodelete = folderpath + "\\transactionpool";
+                if (Directory.Exists(pathtodelete))
+                {
+                    Console.WriteLine("deleting " + (pathtodelete) + "\n");
+                    Directory.Delete(pathtodelete, true);
+                }
+                //reset to null
+                pathtodelete = "";
+             }
+            ooResult = "";
+            Console.WriteLine("Do you want to delete the gateway?\n");
+            ooResult = Console.ReadLine();
+            if (ooResult.Equals("y", StringComparison.OrdinalIgnoreCase) || ooResult.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("yes");
+                pathtodelete = folderpath + "\\gateway";
+                if (Directory.Exists(pathtodelete))
+                {
+                    Console.WriteLine("deleting " + (pathtodelete) + "\n");
+                    Directory.Delete(pathtodelete, true);
+                }
+                //reset to null
+                pathtodelete = "";
+            }
+            ooResult = "";
+            Console.WriteLine("Do you want to delete the host folder?\n");
+            ooResult = Console.ReadLine();
+            if (ooResult.Equals("y", StringComparison.OrdinalIgnoreCase) || ooResult.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("yes");
+                pathtodelete = folderpath + "\\host";
+                if (Directory.Exists(pathtodelete))
+                {
+                    Console.WriteLine("deleting " + (pathtodelete) + "\n");
+                    Directory.Delete(pathtodelete, true);
+                }
+                //reset to null
+                pathtodelete = "";
+            }
+            ooResult = "";
+            Console.WriteLine("Do you want to delete the renter folder?\n");
+            ooResult = Console.ReadLine();
+            if (ooResult.Equals("y", StringComparison.OrdinalIgnoreCase) || ooResult.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("yes");
+                pathtodelete = folderpath + "\\renter";
+                if (Directory.Exists(pathtodelete))
+                {
+                    Console.WriteLine("deleting " + (pathtodelete) + "\n");
+                    Directory.Delete(pathtodelete, true);
+                }
+                //reset to null
+                pathtodelete = "";
+            }
+            ooResult = "";
+            Console.WriteLine("Do you want to delete the wallet data?\n");
+            ooResult = Console.ReadLine();
+            if (ooResult.Equals("y", StringComparison.OrdinalIgnoreCase) || ooResult.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("yes");
+                pathtodelete = folderpath + "\\wallet";
+                if (Directory.Exists(pathtodelete))
+                {
+                    Console.WriteLine("deleting " + (pathtodelete) + "\n");
+                    Directory.Delete(pathtodelete, true);
+                }
+                //reset to null
+                pathtodelete = "";
+            }
+        }
     }
 
 }
